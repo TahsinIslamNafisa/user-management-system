@@ -1,0 +1,12 @@
+// ═══════════════════════════════════════════════════════════
+//  utils/generateToken.js  —  JWT Token Generator
+// ═══════════════════════════════════════════════════════════
+
+const jwt = require("jsonwebtoken");
+
+const generateToken = (id, role = "user") =>
+  jwt.sign({ id, role }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN || "7d",
+  });
+
+module.exports = generateToken;
